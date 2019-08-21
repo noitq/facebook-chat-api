@@ -27,7 +27,7 @@ function isReadableStream(obj) {
   );
 }
 
-function get(url, jar, qs, options) {
+function get_v2(url, jar, qs, options) {
   // I'm still confused about this
   if (getType(qs) === "Object") {
     for (var prop in qs) {
@@ -961,7 +961,7 @@ function makeDefaults(html, userID, ctx) {
   }
 
   function getWithDefaults(url, jar, qs) {
-    return get(url, jar, mergeWithDefaults(qs), ctx.globalOptions);
+    return get_v2(url, jar, mergeWithDefaults(qs), ctx.globalOptions);
   }
 
   function postFormDataWithDefault(url, jar, form, qs) {
@@ -1241,7 +1241,7 @@ function getAppState(jar) {
 }
 module.exports = {
   isReadableStream,
-  get,
+  get: get_v2,
   post,
   postFormData,
   generateThreadingID,
